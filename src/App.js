@@ -1,6 +1,11 @@
+import { BrowserRouter } from "react-router-dom";
+import WebRoutes from "./routes/routes";
+
 function App() {
   return (
-    <p>Hello world!</p>
+    <BrowserRouter>
+      <WebRoutes />
+    </BrowserRouter>
   );
 }
 
