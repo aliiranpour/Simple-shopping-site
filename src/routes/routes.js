@@ -3,6 +3,7 @@ import Products from '../pages/products.js'
 import Aboutus from '../pages/About-us'
 import Callus from '../pages/Call-us'
 import SharedLayout from '../components/layout/Sharedlayout'
+import ProductSharedLayout from '../components/layout/ProductsSharedlayout'
 const { Routes, Route } = require("react-router-dom")
 
 const WebRoutes = () => {
@@ -11,7 +12,9 @@ const WebRoutes = () => {
             <Route>
                 <Route path="/" element={<SharedLayout/>} >
                     <Route index element={<Home />} />
-                    <Route path="/products" element={<Products />} />
+                    <Route path="/products" element={<ProductSharedLayout />} >
+                        <Route index element={<Products />} />
+                    </Route>
                     <Route path='/about-us' element={<Aboutus />} />
                     <Route path="/call-us" element={<Callus />} />
                 </Route>
