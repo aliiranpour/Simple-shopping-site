@@ -1,6 +1,8 @@
+import Searchbar from "../components/Searchbar/searchbar";
+
 const Products = () =>{
     return(
-        <h1>Products</h1>
+        <Searchbar />
     )
 }
 
