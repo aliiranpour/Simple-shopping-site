@@ -1,27 +1,31 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Productcard from "../components/layout/Productcardlayout";
+import '../assets/Style/Pages-style/Products.scss'
 
-const Products = () =>{
-const [products , setProducts] = useState([]);
-    useEffect(()=>{
+const Products = () => {
+    const [products, setProducts] = useState([]);
+    useEffect(() => {
         const fetchProducts = async () => {
-            const res = await fetch("https://642b032ab11efeb759a8885a.mockapi.io/onlineshop2");
-            const data = await res.json();
-            setProducts(data.products);
+            return fetch("https://642b032ab11efeb759a8885a.mockapi.io/onlineshop")
+                    .then ((Response) => Response.json())
+                    .then ((products) => setProducts(products))
         };
         fetchProducts();
-    } , [])
-    return(
-        <>
-            {products.map(p =>{
-                return(
-                    <article key={products.id}>
-                        <h5>{products.name}</h5>
-                        <Link to= {`/products/${products.id}`}>more info</Link>
-                    </article>
+    }, []);
+
+    return (
+        <div className="productlist">
+            {products?.map((p) => {
+                return (
+                    <Link to={`/products/${p.id}`} className="productcard">
+                        <article key={p.id} >
+                            <Productcard id={p.id} name={p.name} avatar={p.avatar} price={p.price} />
+                        </article>
+                    </Link>
                 )
             })}
-        </>
+        </div>
     )
 }
 

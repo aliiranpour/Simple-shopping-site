@@ -1,0 +1,11 @@
+.productlist{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px 80px ;
+    justify-content: center;
+}
+.productcard{
+    border: 0.5px solid rgb(221, 219, 219);
+    display: flex;
+    text-decoration: none;
+}
