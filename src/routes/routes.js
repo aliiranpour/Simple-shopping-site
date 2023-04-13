@@ -5,6 +5,7 @@ import Callus from '../pages/Call-us'
 import SharedLayout from '../components/layout/Sharedlayout'
 import ProductSharedLayout from '../components/layout/ProductsSharedlayout'
 import Singleproduct from '../pages/Singleproduct'
+import Dashboard from '../pages/Dashboard'
 const { Routes, Route } = require("react-router-dom")
 
 const WebRoutes = () => {
@@ -20,6 +21,7 @@ const WebRoutes = () => {
                     <Route path='/about-us' element={<Aboutus />} />
                     <Route path="/call-us" element={<Callus />} />
                 </Route>
+                <Route path='/dashboard' element={<Dashboard />} />
                 <Route path="*" element={<p>This page not found</p>} />
             </Route>
         </Routes>

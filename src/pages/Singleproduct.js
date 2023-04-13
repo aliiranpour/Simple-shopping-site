@@ -2,20 +2,29 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const Singleproduct = () => {
-    const {productid} = useParams();
-    const [products, setProducts] = useState([]);
+    const { productid } = useParams();
+    const [products, setProducts] = useState();
     useEffect(() => {
         const fetchProducts = async () => {
-            return fetch("https://642b032ab11efeb759a8885a.mockapi.io/onlineshop" +  productid)
-                    .then ((Response) => Response.json())
-                    .then ((products) => setProducts(products))
+            const res = await fetch(`https://642b032ab11efeb759a8885a.mockapi.io/onlineshop/${productid}`)
+            const data = await res.json();
+            console.log(data)
+            setProducts(data)
         };
         fetchProducts();
+        console.log(products)
     }, []);
+    return (
+        <>
+            {
+                products ? (
+                    <h1>{products?.name}</h1>
+                    ) : (
+                    <div>loading...</div>
+                )
+            }
 
-    // console.log(products.name)
-    return(
-        <h1>{products.name}</h1>
+        </>
     )
 }
 
